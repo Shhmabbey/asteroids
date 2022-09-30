@@ -1,0 +1,15 @@
+{
+  "name": "asteroids",
+  "version": "1.0.0",
+  "description": "Astroid game",
+  "scripts": {
+    "start": "webpack --watch --mode=development"
+  },
+  "keywords": [],
+  "author": "Abigail Hernandez",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
