@@ -14,9 +14,9 @@ function MovingObject(options) {
   this.game = options.game;
 }
 
-// MovingObject.prototype.collideWith = function collideWith(otherObject) {
-//   // default do nothing
-// };
+MovingObject.prototype.collideWith = function collideWith(otherObject) {
+  // default do nothing
+};
 
 MovingObject.prototype.draw = function draw(ctx) {
   ctx.fillStyle = this.color;
@@ -28,12 +28,14 @@ MovingObject.prototype.draw = function draw(ctx) {
   ctx.fill();
 };
 
-// MovingObject.prototype.isCollidedWith = function isCollidedWith(otherObject) {
-//   const centerDist = Util.dist(this.pos, otherObject.pos);
-//   return centerDist < (this.radius + otherObject.radius);
-// };
+MovingObject.prototype.isCollidedWith = function isCollidedWith(otherObject) {
+  // Two circles have collided if the distance between their center points 
+  // is less than the sum of their radii.
+  const centerDist = Util.dist(this.pos, otherObject.pos);
+  return centerDist < (this.radius + otherObject.radius);
+};
 
-// MovingObject.prototype.isWrappable = true;
+MovingObject.prototype.isWrappable = true;
 
 const NORMAL_FRAME_TIME_DELTA = 1000 / 60;
 MovingObject.prototype.move = function move(timeDelta) {
@@ -56,8 +58,8 @@ MovingObject.prototype.move = function move(timeDelta) {
   // }
 };
 
-// MovingObject.prototype.remove = function remove() {
-//   this.game.remove(this);
-// };
+MovingObject.prototype.remove = function remove() {
+  this.game.remove(this);
+};
 
 module.exports = MovingObject;
