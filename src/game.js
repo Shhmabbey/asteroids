@@ -36,9 +36,24 @@ class Game {
   add(object) {
     if (object instanceof Asteroid) {
       this.asteroids.push(object);
+    } else if (object instanceof Bullet) {
+      this.bullets.push(object);
+    } else if (object instanceof Ship) {
+      this.ships.push(object);
     } else {
       throw new Error("unknown type of object");
     };
+  };
+
+  addShip() {
+    const ship = new Ship({
+      pos: this.randomPosition(),
+      game: this
+    });
+
+    this.add(ship);
+
+    return ship;
   };
 
   addAsteroids() {
