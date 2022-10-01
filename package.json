@@ -1,7 +1,7 @@
 {
   "name": "asteroids",
   "version": "1.0.0",
-  "description": "Astroid game",
+  "description": "Asteroid game",
   "scripts": {
     "start": "webpack --watch --mode=development"
   },

@@ -69,7 +69,36 @@ class Game {
 
   step(delta) {
     this.moveObjects(delta);
-    // this.checkCollisions();
+    this.checkCollisions();
+  };
+
+  wrap(pos) {
+    return [
+      Util.wrap(pos[0], Game.DIM_X), Util.wrap(pos[1], Game.DIM_Y)
+    ];
+  };
+
+  checkCollisions() {
+    const allObjects = this.allObjects();
+    for (let i = 0; i < allObjects.length; i++) {
+      for (let j = 0; j < allObjects.length; j++) {
+        const obj1 = allObjects[i];
+        const obj2 = allObjects[j];
+
+        if (obj1.isCollidedWith(obj2)) {
+          const collision = obj1.collideWith(obj2);
+          if (collision) return;
+        }
+      }
+    }
+  };
+
+  remove(asteroid) {
+    if (object instanceof Asteroid) {
+      this.asteroids.splice(this.asteroids.indexOf(object), 1);
+    } else {
+      throw new Error("unknown type of object");
+    }
   };
 
 };
