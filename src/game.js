@@ -108,12 +108,21 @@ class Game {
     }
   };
 
-  remove(asteroid) {
-    if (object instanceof Asteroid) {
+  remove(object) {
+    if (object instanceof Bullet) {
+      this.bullets.splice(this.bullets.indexOf(object), 1);
+    } else if (object instanceof Asteroid) {
       this.asteroids.splice(this.asteroids.indexOf(object), 1);
+    } else if (object instanceof Ship) {
+      this.ships.splice(this.ships.indexOf(object), 1);
     } else {
       throw new Error("unknown type of object");
-    }
+    };
+  };
+
+  isOutOfBounds(pos) {
+    return (pos[0] < 0) || (pos[1] < 0) ||
+      (pos[0] > Game.DIM_X) || (pos[1] > Game.DIM_Y);
   };
 
 };
